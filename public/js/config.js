@@ -7,6 +7,6 @@
 //                          database security rules protect the data)
 //  VAPID_PUBLIC_KEY: from tools/vapid.html (for phone/browser push).
 // =====================================================================
-export const SUPABASE_URL = 'https://YOUR-PROJECT-ID.supabase.co';
-export const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
+export const SUPABASE_URL = 'https://kesoxcsoygqjyrjzrhcl.supabase.co/rest/v1/';
+export const SUPABASE_ANON_KEY = 'sb_publishable_7bzbcKZTjQh6cUOCW-yznA_JmMZ0ec0';
 export const VAPID_PUBLIC_KEY = '';
