@@ -56,7 +56,7 @@ forms.login.addEventListener('submit', async (e) => {
   const { error } = await sb.auth.signInWithPassword({ email: f.email.value.trim(), password: f.password.value });
   busy(f, false);
   if (error) return msg(f, '.form-error', cleanError(error));
-  location.replace('app.html');
+  window.suGo ? window.suGo('app.html', true) : location.replace('app.html');
 });
 
 forms.signup.addEventListener('submit', async (e) => {
@@ -71,7 +71,7 @@ forms.signup.addEventListener('submit', async (e) => {
   });
   busy(f, false);
   if (error) return msg(f, '.form-error', cleanError(error));
-  if (data.session) return location.replace('app.html');
+  if (data.session) return window.suGo ? window.suGo('app.html', true) : location.replace('app.html');
   f.reset();
   msg(f, '.form-ok', 'Account created! Check your email for a confirmation link. After that, the principal will approve your account.');
 });
@@ -94,5 +94,5 @@ forms.newpass.addEventListener('submit', async (e) => {
   const { error } = await sb.auth.updateUser({ password: f.password.value });
   busy(f, false);
   if (error) return msg(f, '.form-error', cleanError(error));
-  location.replace('app.html');
+  window.suGo ? window.suGo('app.html', true) : location.replace('app.html');
 });
