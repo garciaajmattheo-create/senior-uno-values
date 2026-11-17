@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Senior UNO Values</title>
+<meta name="theme-color" content="#06110A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="UNO Values">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <div class="blob green" style="width: 560px; height: 560px; left: 18%; top: -160px"></div>
+  <div class="blob gold" style="width: 520px; height: 520px; right: -140px; top: 40%"></div>
+
+  <div class="app-inner">
+    <nav class="rail glass" aria-label="App" id="rail" hidden>
+      <a href="#/sections" aria-label="Home"><img src="assets/logo.png" alt="Senior UNO Values"></a>
+      <a class="icon-btn" href="#/sections" data-nav="sections" aria-label="My Sections" title="My Sections"></a>
+      <a class="icon-btn" href="#/advisory" data-nav="advisory" aria-label="My Advisory" title="My Advisory"></a>
+      <a class="icon-btn" href="#/admin" data-nav="admin" aria-label="School overview" title="School overview" hidden></a>
+      <a class="icon-btn" href="#/notifications" data-nav="notifications" aria-label="Notifications" title="Notifications"></a>
+      <a class="icon-btn" href="#/settings" data-nav="settings" aria-label="Settings" title="Settings"></a>
+      <button class="icon-btn" type="button" data-logout aria-label="Log out" title="Log out" style="margin-top: 8px"></button>
+    </nav>
+
+    <div class="main">
+      <header class="topbar" id="topbar" hidden>
+        <nav class="tabs glass" aria-label="Sections">
+          <a href="#/sections" data-nav="sections">My Sections</a>
+          <a href="#/advisory" data-nav="advisory">My Advisory</a>
+          <a href="#/admin" data-nav="admin" hidden>School Overview</a>
+        </nav>
+        <a class="me glass" href="#/settings" aria-label="Your account">
+          <span class="who"><b id="meName"></b><span id="meRole"></span></span>
+          <span class="avatar" id="meInit"></span>
+        </a>
+      </header>
+      <div id="view"><div class="spinner" role="status" aria-label="Loading"></div></div>
+    </div>
+  </div>
+
+  <nav class="bottombar glass" aria-label="App" id="bottombar" hidden>
+    <a class="icon-btn" href="#/sections" data-nav="sections" aria-label="My Sections"></a>
+    <a class="icon-btn" href="#/advisory" data-nav="advisory" aria-label="My Advisory"></a>
+    <a class="icon-btn" href="#/admin" data-nav="admin" aria-label="School overview" hidden></a>
+    <a class="icon-btn" href="#/notifications" data-nav="notifications" aria-label="Notifications"></a>
+    <a class="icon-btn" href="#/settings" data-nav="settings" aria-label="Settings"></a>
+  </nav>
+</div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

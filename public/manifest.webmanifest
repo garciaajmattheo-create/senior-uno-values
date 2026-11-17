@@ -1,0 +1,14 @@
+{
+  "name": "Senior UNO Values",
+  "short_name": "UNO Values",
+  "description": "Conduct Award Rating System · Nasugbu Senior High School 1",
+  "start_url": "app.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#06110A",
+  "theme_color": "#06110A",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

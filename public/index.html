@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Senior UNO Values · Nasugbu Senior High School 1</title>
+<meta name="description" content="Conduct Award Rating System of Nasugbu Senior High School 1. Teachers rate the four DepEd core values.">
+<meta name="theme-color" content="#06110A">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Opening animation (plays once per visit) -->
+<div id="intro" aria-hidden="true">
+  <div class="stage">
+    <div class="em">
+      <div class="glow"></div>
+      <div class="ring"></div>
+      <img src="assets/logo.png" alt="">
+    </div>
+    <div class="tag-wrap">
+      <p class="tag">Shaping Senior UNOs of character</p>
+      <div class="sweep"></div>
+    </div>
+    <div class="values"><span>MAKA-DIYOS</span><span>MAKATAO</span><span>MAKAKALIKASAN</span><span>MAKABANSA</span></div>
+  </div>
+  <button type="button" class="btn btn-ghost btn-sm skip" id="skipIntro" tabindex="0">Skip intro
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-slides" aria-hidden="true">
+    <div class="on" style="background-image:url(assets/assembly.jpg)"></div>
+    <div style="background-image:url(assets/nursing.jpg)"></div>
+    <div style="background-image:url(assets/dance.jpg); background-position: center 30%"></div>
+  </div>
+
+  <nav class="topnav glass reveal" aria-label="Main">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="Nasugbu Senior High School 1 emblem">
+      <span><b>SENIOR UNO <span style="color: var(--gold)">Values</span></b><small>Nasugbu Senior High School 1</small></span>
+    </a>
+    <div class="links">
+      <a class="nl" href="#how">How it works</a>
+      <a class="nl" href="#scale">Rating scale</a>
+      <a class="nl" href="#team">Team</a>
+      <a class="btn btn-gold btn-sm" href="login.html">Log in</a>
+    </div>
+  </nav>
+
+  <div class="hero-body">
+    <p class="eyebrow reveal d1" style="color: #CFE6D4">Nasugbu Senior High School 1 · Conduct Award Rating System</p>
+    <h1 class="reveal d1">
+      <span class="big grad-text">SENIOR UNO</span>
+      <span class="sub">VALUES</span>
+    </h1>
+    <div class="bar reveal d2"></div>
+    <p class="reveal d2" style="font-size: clamp(17px, 1.6vw, 21px); font-weight: 500; color: #E3EFE6">Shaping Senior UNOs of character</p>
+    <p class="reveal d2 small" id="syLine" style="font-weight: 600; letter-spacing: .08em; color: #A9C2B0">CONDUCT AWARD RATING SYSTEM</p>
+    <div class="reveal d3" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px">
+      <a class="btn btn-primary" href="login.html">Log in</a>
+      <a class="btn btn-ghost glass" href="login.html#signup">Sign up as Teacher</a>
+    </div>
+  </div>
+  <div class="dots" role="tablist" aria-label="Photos">
+    <button type="button" class="on" aria-label="Photo 1"></button>
+    <button type="button" aria-label="Photo 2"></button>
+    <button type="button" aria-label="Photo 3"></button>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="how">
+    <div class="blob green" style="width: 520px; height: 520px; left: -160px; top: 40px"></div>
+    <div class="blob gold" style="width: 460px; height: 460px; right: -120px; bottom: 0"></div>
+    <p class="eyebrow" style="position: relative">How it works</p>
+    <h2 style="position: relative; margin: 10px 0 36px; max-width: 760px">Every subject teacher has a say in who earns the Conduct Award.</h2>
+    <div class="grid-auto">
+      <div class="step glass"><span class="num">01</span><h3>Advisers upload the class list</h3><p>Paste names, upload an Excel or CSV file, import the SF1, or add students one by one.</p></div>
+      <div class="step glass"><span class="num">02</span><h3>Teachers join with a code</h3><p>Each adviser shares a section access code. Teachers enter it once per term to link the section.</p></div>
+      <div class="step glass"><span class="num">03</span><h3>Rate the four core values</h3><p>Maka-Diyos, Makatao, Makakalikasan and Makabansa, marked AO, SO, RO or NO. Individual votes stay anonymous.</p></div>
+      <div class="step glass"><span class="num" style="color: var(--gold)">04</span><h3>The awardee rises to the top</h3><p>Live averages per term, a final mark across three terms, and a tie-break vote if needed.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="scale" style="padding-top: 0">
+    <div class="glass" style="border-radius: 36px; padding: clamp(22px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
+      <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 12px">
+        <p class="eyebrow">Official marking</p>
+        <h2 style="font-size: clamp(28px, 3.4vw, 40px)">Observed Values, the DepEd way</h2>
+        <p class="muted">Marks follow DepEd Order No. 8, s. 2015, Table 13. Averages are always shown back as an official mark.</p>
+      </div>
+      <div style="flex: 2 1 480px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px">
+        <div class="scale-card" style="background: rgba(95,211,122,.14); border: 1px solid rgba(95,211,122,.4)"><b class="t-AO">AO</b><div style="margin-top: 8px; font-weight: 600">Always Observed</div></div>
+        <div class="scale-card" style="background: rgba(242,194,48,.13); border: 1px solid rgba(242,194,48,.4)"><b class="t-SO">SO</b><div style="margin-top: 8px; font-weight: 600">Sometimes Observed</div></div>
+        <div class="scale-card" style="background: rgba(245,154,74,.13); border: 1px solid rgba(245,154,74,.4)"><b class="t-RO">RO</b><div style="margin-top: 8px; font-weight: 600">Rarely Observed</div></div>
+        <div class="scale-card" style="background: rgba(240,106,106,.13); border: 1px solid rgba(240,106,106,.4)"><b class="t-NO">NO</b><div style="margin-top: 8px; font-weight: 600">Not Observed</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Senior UNOs in action: hero-style photo section -->
+  <section class="photo-hero" id="action" aria-labelledby="actionTitle">
+    <div class="ph-slides" aria-hidden="true">
+      <div class="on" style="background-image:url(assets/nursing.jpg)"></div>
+      <div style="background-image:url(assets/dance.jpg); background-position: center 30%"></div>
+      <div style="background-image:url(assets/assembly.jpg); background-position: center 55%"></div>
+    </div>
+    <div class="ph-body">
+      <p class="eyebrow" style="color: #CFE6D4">Nasugbu Senior High School 1 · Campus life</p>
+      <h2 class="hero-title" id="actionTitle">
+        <span class="big grad-text">SENIOR UNOs</span>
+        <span class="sub">IN ACTION</span>
+      </h2>
+      <div class="bar"></div>
+      <p class="lede">Character shown in every class, every performance and every assembly.</p>
+    </div>
+    <div class="thumbs" role="tablist" aria-label="Photos">
+      <button type="button" class="thumb glass on" role="tab" aria-selected="true">
+        <span class="img" style="background-image:url(assets/nursing.jpg)"></span><span class="lbl"><b>Health &amp; care</b><small>Allied health students</small></span></button>
+      <button type="button" class="thumb glass" role="tab" aria-selected="false">
+        <span class="img" style="background-image:url(assets/dance.jpg); background-position: center 30%"></span><span class="lbl"><b>Culture &amp; arts</b><small>Dance performance</small></span></button>
+      <button type="button" class="thumb glass" role="tab" aria-selected="false">
+        <span class="img" style="background-image:url(assets/assembly.jpg)"></span><span class="lbl"><b>Assembly</b><small>Covered court</small></span></button>
+    </div>
+  </section>
+
+  <!-- The people behind Senior UNO Values: hero-style team section -->
+  <section class="photo-hero team-hero" id="team" aria-labelledby="teamTitle">
+    <div class="ph-slides" aria-hidden="true">
+      <div class="on" style="background-image:url(assets/assembly.jpg); background-position: center 70%"></div>
+    </div>
+    <div class="ph-body">
+      <p class="eyebrow" style="color: #CFE6D4">Leadership &amp; project team</p>
+      <h2 class="hero-title" id="teamTitle">
+        <span class="big grad-text">THE PEOPLE</span>
+        <span class="sub">BEHIND THE VALUES</span>
+      </h2>
+      <div class="bar"></div>
+    </div>
+    <div class="team-grid">
+      <article class="person glass">
+        <img src="assets/principal.jpg" alt="Sofio S. Panaligan Jr.">
+        <div style="padding: 0 10px 12px"><p class="role">Principal II</p><h3>Sofio S. Panaligan Jr.</h3></div>
+      </article>
+      <article class="person glass">
+        <img src="assets/eron.jpg" alt="Eron C. Panaligan">
+        <div style="padding: 0 10px 12px"><p class="role">Subject Teacher · Project Adviser</p><h3>Eron C. Panaligan</h3></div>
+      </article>
+      <article class="person glass devs">
+        <p class="role">Developers · STEM-12 Newton</p>
+        <div style="display: flex; align-items: center; gap: 14px">
+          <span class="avatar" style="width: 56px; height: 56px; font-family: var(--font-display); font-size: 19px">AT</span>
+          <span><b style="font-family: var(--font-display); font-size: 22px; display: block">AJ Tindugan</b><span class="small muted">Group leader</span></span>
+        </div>
+        <div style="height: 1px; background: rgba(255,255,255,.16)"></div>
+        <ul>
+          <li>Francis Betita</li><li>John Carlo Manalo</li><li>Priam Pescozo</li>
+          <li>Louie Briones</li><li>Niel Jonas Dimafelix</li><li>Drew Emmanuel Bautista</li>
+        </ul>
+        <p class="small muted" style="margin-top: auto; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.12)">Built for Nasugbu Senior High School 1, Lumbangan, Nasugbu, Batangas.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer glass">
+  <div class="cols">
+    <div style="flex: 1 1 300px; display: flex; gap: 16px; align-items: flex-start">
+      <img src="assets/logo.png" alt="" style="width: 72px; height: 72px; object-fit: contain">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <b style="font-family: var(--font-display); font-size: 20px">SENIOR UNO <span style="color: var(--gold)">Values</span></b>
+        <span class="small muted">Nasugbu Senior High School 1<br>Lumbangan, Nasugbu, Batangas</span>
+      </div>
+    </div>
+    <nav aria-label="Footer" style="flex: 0 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+      <b>Quick links</b>
+      <a href="login.html">Log in</a>
+      <a href="login.html#signup">Sign up as Teacher</a>
+      <a href="#how">How it works</a>
+      <a href="#team">Project team</a>
+    </nav>
+    <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #B7C9BC">
+      <b style="color: #fff">Reference</b>
+      <span>Ratings based on DepEd Order No. 8, s. 2015 (Table 13, Marking for the Observed Values).</span>
+      <span>Developed by STEM-12 Newton: AJ Tindugan and group.</span>
+    </div>
+  </div>
+  <div class="base">
+    <span>© <span id="yr">2026</span> Nasugbu Senior High School 1. All rights reserved.</span>
+    <span>Maka-Diyos · Makatao · Makakalikasan · Makabansa</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var intro = document.getElementById('intro');
+  var body = document.body;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var seen = false;
+  try { seen = sessionStorage.getItem('su-intro') === '1'; } catch (e) {}
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function finish() {
+    if (!intro || intro.classList.contains('done')) return;
+    intro.classList.add('done');
+    body.classList.add('revealed');
+    try { sessionStorage.setItem('su-intro', '1'); } catch (e) {}
+    setTimeout(function () { intro.remove(); }, 1000);
+  }
+  if (seen || reduce) { intro.remove(); body.classList.add('revealed'); }
+  else {
+    document.getElementById('skipIntro').addEventListener('click', finish);
+    setTimeout(finish, 5900);
+  }
+
+  // Hero photo slideshow
+  var slides = document.querySelectorAll('.hero-slides div');
+  var dots = document.querySelectorAll('.hero .dots button');
+  var i = 0, timer;
+  function show(n) {
+    slides[i].classList.remove('on'); dots[i].classList.remove('on');
+    i = (n + slides.length) % slides.length;
+    slides[i].classList.add('on'); dots[i].classList.add('on');
+  }
+  function start() { clearInterval(timer); timer = setInterval(function () { show(i + 1); }, 6500); }
+  dots.forEach(function (d, n) { d.addEventListener('click', function () { show(n); start(); }); });
+  start();
+
+  // "Senior UNOs in action" photo slideshow
+  var ps = document.querySelectorAll('#action .ph-slides div');
+  var th = document.querySelectorAll('#action .thumb');
+  var pi = 0, ptimer;
+  function pshow(n) {
+    ps[pi].classList.remove('on'); th[pi].classList.remove('on'); th[pi].setAttribute('aria-selected', 'false');
+    pi = (n + ps.length) % ps.length;
+    ps[pi].classList.add('on'); th[pi].classList.add('on'); th[pi].setAttribute('aria-selected', 'true');
+  }
+  function pstart() { clearInterval(ptimer); ptimer = setInterval(function () { pshow(pi + 1); }, 6000); }
+  th.forEach(function (t, n) { t.addEventListener('click', function () { pshow(n); pstart(); }); });
+  pstart();
+
+  // Low-power phones get a lighter glass look
+  if ((navigator.deviceMemory && navigator.deviceMemory <= 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)) {
+    document.documentElement.classList.add('lite');
+  }
+})();
+</script>
+<script type="module">
+  // Show the current school year/term if the database is set up.
+  import { publicInfo } from './js/supa.js';
+  publicInfo().then(function (info) {
+    if (info && info.year) document.getElementById('syLine').textContent =
+      'S.Y. ' + info.year + (info.term ? ' · TERM ' + info.term : '');
+  }).catch(function () {});
+</script>
+</body>
+</html>
