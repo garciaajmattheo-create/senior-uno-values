@@ -147,7 +147,7 @@ select.field option { background: #0B1A10; }
   transition: opacity .9s ease;
 }
 #intro.done { opacity: 0; pointer-events: none; }
-#intro .stage { display: flex; flex-direction: column; align-items: center; gap: 28px; padding: 0 20px; text-align: center; animation: introOut .8s ease 5.2s forwards; }
+#intro .stage { display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 0 20px; text-align: center; animation: introOut .9s ease 6.4s forwards; }
 #intro .em { position: relative; width: clamp(150px, 26vw, 230px); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; opacity: 0; animation: emIn 1.2s cubic-bezier(.2,.8,.2,1) .5s forwards; }
 #intro .em img { position: relative; width: 92%; height: 92%; object-fit: contain; }
 #intro .glow { position: absolute; inset: -40px; border-radius: 50%; background: radial-gradient(circle, rgba(155,224,74,.35), transparent 62%); animation: pulse 2.6s ease-in-out infinite; }
@@ -156,23 +156,69 @@ select.field option { background: #0B1A10; }
   -webkit-mask: radial-gradient(circle, transparent 61%, #000 62%, #000 66%, transparent 67%);
   mask: radial-gradient(circle, transparent 61%, #000 62%, #000 66%, transparent 67%);
   animation: spin 2.6s linear infinite; }
-#intro .tag-wrap { position: relative; overflow: hidden; padding: 4px 8px; }
-#intro .tag { font-family: var(--font-display); font-size: clamp(22px, 3.2vw, 34px); font-weight: 700; color: #F3F8F4; clip-path: inset(0 100% 0 0); animation: tagIn 1.3s cubic-bezier(.6,0,.2,1) 1.8s forwards; }
-#intro .sweep { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 35%, rgba(242,194,48,.55) 50%, transparent 65%); mix-blend-mode: screen; transform: translateX(-120%); animation: sweep 1.4s ease-in-out 1.9s forwards; }
-#intro .values { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: clamp(11px, 1.2vw, 15px); font-weight: 700; letter-spacing: .22em; color: var(--lime); }
-#intro .values span { opacity: 0; transform: translateY(8px); animation: vIn .5s ease forwards; }
-#intro .values span:nth-child(1) { animation-delay: 3.1s; }
-#intro .values span:nth-child(2) { animation-delay: 3.4s; }
-#intro .values span:nth-child(3) { animation-delay: 3.7s; }
-#intro .values span:nth-child(4) { animation-delay: 4.0s; color: var(--gold); }
+#intro .tag-wrap { position: relative; padding: 6px 10px; }
+/* Tagline: formal all-caps serif. A soft gold shine runs through the letters
+   themselves (no box of light behind the text). */
+#intro .tag {
+  font-family: 'Cinzel', 'Times New Roman', serif; font-weight: 600; text-transform: uppercase;
+  font-size: clamp(17px, 2.5vw, 30px); letter-spacing: .14em; line-height: 1.3;
+  background: linear-gradient(100deg, #F3F8F4 0%, #F3F8F4 42%, #FFE69A 48%, #F2C230 50%, #FFE69A 52%, #F3F8F4 58%, #F3F8F4 100%);
+  background-size: 300% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 14px rgba(242,194,48,.18));
+  clip-path: inset(0 100% 0 0);
+  animation: tagIn 1.6s cubic-bezier(.6,0,.2,1) 1.7s forwards, shine 2.6s ease-in-out 2.2s forwards;
+}
+/* Core values: one slow, continuous left-to-right reveal with a soft edge. */
+#intro .values {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 16px;
+  font-family: 'Cinzel', 'Times New Roman', serif; font-size: clamp(11px, 1.2vw, 15px); font-weight: 600; letter-spacing: .24em; color: var(--lime);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
+  -webkit-mask-size: 300% 100%; mask-size: 300% 100%;
+  -webkit-mask-position: 100% 0; mask-position: 100% 0;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  animation: valuesIn 3.2s cubic-bezier(.45,0,.25,1) 3.0s forwards;
+}
+#intro .values i { font-style: normal; color: #4E6B55; }
+#intro .values .last { color: var(--gold); }
 #intro .skip { position: absolute; right: 24px; bottom: 24px; }
 @keyframes emIn { from { opacity: 0; transform: scale(.72); } to { opacity: 1; transform: scale(1); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse { 0%, 100% { opacity: .35; } 50% { opacity: .8; } }
-@keyframes tagIn { to { clip-path: inset(0 0 0 0); } }
-@keyframes sweep { 0% { transform: translateX(-120%); opacity: 1; } 100% { transform: translateX(120%); opacity: 0; } }
-@keyframes vIn { to { opacity: 1; transform: none; } }
+@keyframes tagIn { to { clip-path: inset(0 -5% 0 0); } }
+@keyframes shine { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+@keyframes valuesIn { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; } to { -webkit-mask-position: 0% 0; mask-position: 0% 0; } }
 @keyframes introOut { to { opacity: 0; transform: scale(1.03); } }
+
+/* =====================================================================
+   PAGE-CHANGE LOADER (js/loader.js)
+   ===================================================================== */
+html.su-loading, html.su-loading body { background: #0A0C0B; }
+html.su-loading body > * { visibility: hidden; }
+#su-loader { position: fixed; inset: 0; z-index: 300; background: #0A0C0B; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 0 20px; text-align: center; }
+#su-loader.leave { opacity: 0; animation: ldFadeIn .35s ease forwards; }
+#su-loader.leave > * { display: none; }
+#su-loader.out { animation: ldFadeOut .7s ease forwards; }
+#su-loader .ld-em { position: relative; width: 74px; height: 74px; opacity: 0; transform: scale(.9); }
+#su-loader .ld-em img { position: relative; width: 100%; height: 100%; object-fit: contain; }
+#su-loader .ld-glow { position: absolute; inset: -26px; border-radius: 50%; background: radial-gradient(circle, rgba(155,224,74,.28), transparent 65%); }
+#su-loader.play .ld-em { animation: ldEmblem 2.9s ease-in-out .35s forwards; }
+/* The beam of light: the text is only visible where the light passes. */
+#su-loader .ld-text, #su-loader .ld-sub {
+  background: linear-gradient(90deg, transparent 0%, transparent 30%, rgba(120,140,128,.55) 38%, #FFFFFF 47%, #FFFFFF 51%, rgba(120,140,128,.55) 62%, transparent 70%, transparent 100%);
+  background-size: 320% 100%; background-position: 100% 0; background-repeat: no-repeat;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+#su-loader .ld-text { font-weight: 700; font-size: clamp(15px, 1.7vw, 20px); line-height: 1.45; }
+#su-loader .ld-sub { font-size: clamp(10px, 1vw, 12px); font-weight: 700; letter-spacing: .24em;
+  background-image: linear-gradient(90deg, transparent 0%, transparent 30%, rgba(155,224,74,.45) 38%, #C9F28F 47%, #F2C230 51%, rgba(155,224,74,.45) 62%, transparent 70%, transparent 100%); }
+#su-loader.play .ld-text { animation: ldBeam 3s cubic-bezier(.45,0,.35,1) .15s forwards; }
+#su-loader.play .ld-sub { animation: ldBeam 3s cubic-bezier(.45,0,.35,1) .4s forwards; }
+@keyframes ldBeam { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+@keyframes ldEmblem { 0% { opacity: 0; transform: scale(.9); } 35%, 62% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.04); } }
+@keyframes ldFadeIn { to { opacity: 1; } }
+@keyframes ldFadeOut { to { opacity: 0; visibility: hidden; } }
 
 /* Hero reveal after the intro */
 .reveal { opacity: 0; transform: translateY(30px); }
