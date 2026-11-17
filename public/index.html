@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script src="js/loader.js"></script>
+<script src="js/motion.js" defer></script>
 </head>
 <body>
 
@@ -80,28 +81,28 @@
   <section class="section" id="how">
     <div class="blob green" style="width: 520px; height: 520px; left: -160px; top: 40px"></div>
     <div class="blob gold" style="width: 460px; height: 460px; right: -120px; bottom: 0"></div>
-    <p class="eyebrow" style="position: relative">How it works</p>
-    <h2 style="position: relative; margin: 10px 0 36px; max-width: 760px">Every subject teacher has a say in who earns the Conduct Award.</h2>
+    <p class="eyebrow" data-anim="up" style="position: relative">How it works</p>
+    <h2 data-anim="up" style="--d: 100ms; position: relative; margin: 10px 0 36px; max-width: 760px">Every subject teacher has a say in who earns the Conduct Award.</h2>
     <div class="grid-auto">
-      <div class="step glass"><span class="num">01</span><h3>Advisers upload the class list</h3><p>Paste names, upload an Excel or CSV file, import the SF1, or add students one by one.</p></div>
-      <div class="step glass"><span class="num">02</span><h3>Teachers join with a code</h3><p>Each adviser shares a section access code. Teachers enter it once per term to link the section.</p></div>
-      <div class="step glass"><span class="num">03</span><h3>Rate the four core values</h3><p>Maka-Diyos, Makatao, Makakalikasan and Makabansa, marked AO, SO, RO or NO. Individual votes stay anonymous.</p></div>
-      <div class="step glass"><span class="num" style="color: var(--gold)">04</span><h3>The awardee rises to the top</h3><p>Live averages per term, a final mark across three terms, and a tie-break vote if needed.</p></div>
+      <div class="step glass" data-anim="up" style="--d: 0ms"><span class="num">01</span><h3>Advisers upload the class list</h3><p>Paste names, upload an Excel or CSV file, import the SF1, or add students one by one.</p></div>
+      <div class="step glass" data-anim="up" style="--d: 120ms"><span class="num">02</span><h3>Teachers join with a code</h3><p>Each adviser shares a section access code. Teachers enter it once per term to link the section.</p></div>
+      <div class="step glass" data-anim="up" style="--d: 240ms"><span class="num">03</span><h3>Rate the four core values</h3><p>Maka-Diyos, Makatao, Makakalikasan and Makabansa, marked AO, SO, RO or NO. Individual votes stay anonymous.</p></div>
+      <div class="step glass" data-anim="up" style="--d: 360ms"><span class="num" style="color: var(--gold)">04</span><h3>The awardee rises to the top</h3><p>Live averages per term, a final mark across three terms, and a tie-break vote if needed.</p></div>
     </div>
   </section>
 
   <section class="section" id="scale" style="padding-top: 0">
-    <div class="glass" style="border-radius: 36px; padding: clamp(22px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
+    <div class="glass" data-anim="up" style="border-radius: 36px; padding: clamp(22px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
       <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 12px">
         <p class="eyebrow">Official marking</p>
         <h2 style="font-size: clamp(28px, 3.4vw, 40px)">Observed Values, the DepEd way</h2>
         <p class="muted">Marks follow DepEd Order No. 8, s. 2015, Table 13. Averages are always shown back as an official mark.</p>
       </div>
       <div style="flex: 2 1 480px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px">
-        <div class="scale-card" style="background: rgba(95,211,122,.14); border: 1px solid rgba(95,211,122,.4)"><b class="t-AO">AO</b><div style="margin-top: 8px; font-weight: 600">Always Observed</div></div>
-        <div class="scale-card" style="background: rgba(242,194,48,.13); border: 1px solid rgba(242,194,48,.4)"><b class="t-SO">SO</b><div style="margin-top: 8px; font-weight: 600">Sometimes Observed</div></div>
-        <div class="scale-card" style="background: rgba(245,154,74,.13); border: 1px solid rgba(245,154,74,.4)"><b class="t-RO">RO</b><div style="margin-top: 8px; font-weight: 600">Rarely Observed</div></div>
-        <div class="scale-card" style="background: rgba(240,106,106,.13); border: 1px solid rgba(240,106,106,.4)"><b class="t-NO">NO</b><div style="margin-top: 8px; font-weight: 600">Not Observed</div></div>
+        <div class="scale-card" data-anim="zoom" style="--d: 200ms; background: rgba(95,211,122,.14); border: 1px solid rgba(95,211,122,.4)"><b class="t-AO">AO</b><div style="margin-top: 8px; font-weight: 600">Always Observed</div></div>
+        <div class="scale-card" data-anim="zoom" style="--d: 310ms; background: rgba(242,194,48,.13); border: 1px solid rgba(242,194,48,.4)"><b class="t-SO">SO</b><div style="margin-top: 8px; font-weight: 600">Sometimes Observed</div></div>
+        <div class="scale-card" data-anim="zoom" style="--d: 420ms; background: rgba(245,154,74,.13); border: 1px solid rgba(245,154,74,.4)"><b class="t-RO">RO</b><div style="margin-top: 8px; font-weight: 600">Rarely Observed</div></div>
+        <div class="scale-card" data-anim="zoom" style="--d: 530ms; background: rgba(240,106,106,.13); border: 1px solid rgba(240,106,106,.4)"><b class="t-NO">NO</b><div style="margin-top: 8px; font-weight: 600">Not Observed</div></div>
       </div>
     </div>
   </section>
@@ -113,7 +114,7 @@
       <div style="background-image:url(assets/dance.jpg); background-position: center 30%"></div>
       <div style="background-image:url(assets/assembly.jpg); background-position: center 55%"></div>
     </div>
-    <div class="ph-body">
+    <div class="ph-body" data-anim="up">
       <p class="eyebrow" style="color: #CFE6D4">Nasugbu Senior High School 1 · Campus life</p>
       <h2 class="hero-title" id="actionTitle">
         <span class="big grad-text">SENIOR UNOs</span>
@@ -123,11 +124,11 @@
       <p class="lede">Character shown in every class, every performance and every assembly.</p>
     </div>
     <div class="thumbs" role="tablist" aria-label="Photos">
-      <button type="button" class="thumb glass on" role="tab" aria-selected="true">
+      <button type="button" class="thumb glass on" data-anim="up" style="--d: 200ms" role="tab" aria-selected="true">
         <span class="img" style="background-image:url(assets/nursing.jpg)"></span><span class="lbl"><b>Health &amp; care</b><small>Allied health students</small></span></button>
-      <button type="button" class="thumb glass" role="tab" aria-selected="false">
+      <button type="button" class="thumb glass" data-anim="up" style="--d: 320ms" role="tab" aria-selected="false">
         <span class="img" style="background-image:url(assets/dance.jpg); background-position: center 30%"></span><span class="lbl"><b>Culture &amp; arts</b><small>Dance performance</small></span></button>
-      <button type="button" class="thumb glass" role="tab" aria-selected="false">
+      <button type="button" class="thumb glass" data-anim="up" style="--d: 440ms" role="tab" aria-selected="false">
         <span class="img" style="background-image:url(assets/assembly.jpg)"></span><span class="lbl"><b>Assembly</b><small>Covered court</small></span></button>
     </div>
   </section>
@@ -137,7 +138,7 @@
     <div class="ph-slides" aria-hidden="true">
       <div class="on" style="background-image:url(assets/assembly.jpg); background-position: center 70%"></div>
     </div>
-    <div class="ph-body">
+    <div class="ph-body" data-anim="up">
       <p class="eyebrow" style="color: #CFE6D4">Leadership &amp; project team</p>
       <h2 class="hero-title" id="teamTitle">
         <span class="big grad-text">THE PEOPLE</span>
@@ -146,15 +147,15 @@
       <div class="bar"></div>
     </div>
     <div class="team-grid">
-      <article class="person glass">
+      <article class="person glass" data-anim="up" style="--d: 150ms">
         <img src="assets/principal.jpg" alt="Sofio S. Panaligan Jr.">
         <div style="padding: 0 10px 12px"><p class="role">Principal II</p><h3>Sofio S. Panaligan Jr.</h3></div>
       </article>
-      <article class="person glass">
+      <article class="person glass" data-anim="up" style="--d: 290ms">
         <img src="assets/eron.jpg" alt="Eron C. Panaligan">
         <div style="padding: 0 10px 12px"><p class="role">Subject Teacher · Project Adviser</p><h3>Eron C. Panaligan</h3></div>
       </article>
-      <article class="person glass devs">
+      <article class="person glass devs" data-anim="up" style="--d: 430ms">
         <p class="role">Developers · STEM-12 Newton</p>
         <div style="display: flex; align-items: center; gap: 14px">
           <span class="avatar" style="width: 56px; height: 56px; font-family: var(--font-display); font-size: 19px">AT</span>
@@ -173,21 +174,21 @@
 
 <footer class="footer glass">
   <div class="cols">
-    <div style="flex: 1 1 300px; display: flex; gap: 16px; align-items: flex-start">
+    <div data-anim="up" style="flex: 1 1 300px; display: flex; gap: 16px; align-items: flex-start">
       <img src="assets/logo.png" alt="" style="width: 72px; height: 72px; object-fit: contain">
       <div style="display: flex; flex-direction: column; gap: 6px">
         <b style="font-family: var(--font-display); font-size: 20px">SENIOR UNO <span style="color: var(--gold)">Values</span></b>
         <span class="small muted">Nasugbu Senior High School 1<br>Lumbangan, Nasugbu, Batangas</span>
       </div>
     </div>
-    <nav aria-label="Footer" style="flex: 0 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+    <nav aria-label="Footer" data-anim="up" style="--d: 120ms; flex: 0 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
       <b>Quick links</b>
       <a href="login.html">Log in</a>
       <a href="login.html#signup">Sign up as Teacher</a>
       <a href="#how">How it works</a>
       <a href="#team">Project team</a>
     </nav>
-    <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #B7C9BC">
+    <div data-anim="up" style="--d: 240ms; flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #B7C9BC">
       <b style="color: #fff">Reference</b>
       <span>Ratings based on DepEd Order No. 8, s. 2015 (Table 13, Marking for the Observed Values).</span>
       <span>Developed by STEM-12 Newton: AJ Tindugan and group.</span>
@@ -219,7 +220,11 @@
     body.classList.add('revealed');
     setTimeout(function () { intro.remove(); }, 1000);
   }
-  if (!play || reduce) { intro.remove(); body.classList.add('revealed'); }
+  if (!play || reduce) {
+    intro.remove();
+    if (window.SU_FROM_LOADER && !reduce) document.addEventListener('su-loader-out', function () { body.classList.add('revealed'); });
+    else body.classList.add('revealed');
+  }
   else {
     document.getElementById('skipIntro').addEventListener('click', finish);
     setTimeout(finish, 7300);

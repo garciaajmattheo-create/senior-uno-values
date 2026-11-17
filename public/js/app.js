@@ -119,9 +119,29 @@ async function route() {
     else if (page === 'notifications') await viewNotifications(ctx);
     else if (page === 'settings') await viewSettings(ctx);
     else location.hash = '#/sections';
+    if (ctx.alive()) countUp(view);
   } catch (e) {
     if (ctx.alive()) view.innerHTML = errorBox(e.message);
   }
+}
+
+// Big numbers count up from 0 when a screen opens.
+function countUp(root) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  root.querySelectorAll('.stat .v').forEach((el) => {
+    const node = el.firstChild;
+    if (!node || node.nodeType !== 3) return;
+    const target = parseInt(node.textContent, 10);
+    if (!Number.isFinite(target) || target <= 0) return;
+    const t0 = performance.now(), dur = 900;
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      node.textContent = String(Math.round(target * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    node.textContent = '0';
+    requestAnimationFrame(tick);
+  });
 }
 
 // =====================================================================
@@ -314,7 +334,10 @@ async function viewRate(ctx, stId) {
   function paintLive() {
     view.querySelectorAll('.rate-row').forEach((row) => {
       const s = byId[row.dataset.sid];
-      row.querySelector('.live').innerHTML = `<span class="num">${fmt(s.overall)}</span>${badge(s.letter)}`;
+      const live = row.querySelector('.live');
+      const before = live.textContent;
+      live.innerHTML = `<span class="num">${fmt(s.overall)}</span>${badge(s.letter)}`;
+      if (before !== live.textContent) live.querySelector('.badge')?.classList.add('bump');
       row.classList.toggle('todo', open && !isDone(s));
     });
     paintSummary();

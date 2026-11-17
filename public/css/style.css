@@ -137,15 +137,6 @@ select.field option { background: #0B1A10; }
 .modal { width: min(640px, 100%); max-height: 90vh; overflow: auto; border-radius: 32px; padding: 26px; display: flex; flex-direction: column; gap: 16px; background: rgba(14,30,20,.96); }
 .modal header { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 
-/* Temeraire (TypeTogether) for the opening-animation tagline. It is a paid
-   font: after buying a web licence, put the files in public/fonts/ with these
-   names. Until then the tagline falls back to Cinzel. */
-@font-face {
-  font-family: 'Temeraire';
-  src: url(../fonts/Temeraire-Regular.woff2) format('woff2'), url(../fonts/Temeraire-Regular.woff) format('woff');
-  font-weight: 400 700; font-style: normal; font-display: swap;
-}
-
 /* =====================================================================
    OPENING ANIMATION
    ===================================================================== */
@@ -169,7 +160,7 @@ select.field option { background: #0B1A10; }
 /* Tagline: formal all-caps serif. A soft gold shine runs through the letters
    themselves (no box of light behind the text). */
 #intro .tag {
-  font-family: 'Temeraire', 'Cinzel', 'Times New Roman', serif; font-weight: 600; text-transform: uppercase;
+  font-family: 'Cinzel', 'Times New Roman', serif; font-weight: 600; text-transform: uppercase;
   font-size: clamp(17px, 2.5vw, 30px); letter-spacing: .14em; line-height: 1.3;
   background: linear-gradient(100deg, #F3F8F4 0%, #F3F8F4 42%, #FFE69A 48%, #F2C230 50%, #FFE69A 52%, #F3F8F4 58%, #F3F8F4 100%);
   background-size: 300% 100%; background-position: 100% 0;
@@ -443,3 +434,118 @@ body.revealed .reveal.d3 { animation-delay: .45s; }
 .list-table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .list-table td, .list-table th { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,.08); text-align: left; }
 .list-table th { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+/* =====================================================================
+   MOTION — scroll reveals, page entrances and hover effects
+   (only transform/opacity, so it stays smooth on phones)
+   ===================================================================== */
+:root { --ease-out: cubic-bezier(.2,.8,.2,1); }
+
+/* Scroll reveal (landing page). js/motion.js adds .in when visible. */
+[data-anim] { opacity: 0; transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); transition-delay: var(--d, 0ms); will-change: opacity, transform; }
+[data-anim="up"] { transform: translateY(34px); }
+[data-anim="left"] { transform: translateX(-40px); }
+[data-anim="right"] { transform: translateX(40px); }
+[data-anim="zoom"] { transform: scale(.88); }
+[data-anim].in { opacity: 1; transform: none; }
+html.no-motion-js [data-anim] { opacity: 1; transform: none; }
+
+/* Hover: cards lift, photos zoom gently */
+.step, .person, .sec-card, .scale-card, .lead, .thumb, .panel.lift { transition: opacity .9s var(--ease-out), transform .35s var(--ease-out), box-shadow .35s ease, border-color .35s ease; transition-delay: var(--d, 0ms); }
+.step.in:hover, .person.in:hover, .scale-card.in:hover, .sec-card:hover, .lead:hover {
+  transform: translateY(-6px); transition-delay: 0ms;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 26px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(155,224,74,.25);
+}
+.person img { transition: transform .8s var(--ease-out); }
+.person:hover img { transform: scale(1.04); }
+.person { overflow: hidden; }
+.step .num { transition: transform .4s var(--ease-out); display: inline-block; }
+.step:hover .num { transform: translateX(6px); }
+
+/* Buttons: a light sheen passes over on hover */
+.btn-primary, .btn-gold { position: relative; overflow: hidden; isolation: isolate; }
+.btn-primary::after, .btn-gold::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+  transform: translateX(-120%); transition: transform .7s var(--ease-out);
+}
+.btn-primary:hover::after, .btn-gold:hover::after { transform: translateX(120%); }
+.icon-btn { transition: background .2s ease, transform .2s var(--ease-out); }
+.icon-btn:hover { transform: scale(1.08); }
+.tabs a { transition: background .25s ease, color .25s ease; }
+.tabs a:not(.active):hover { background: rgba(255,255,255,.1); }
+
+/* Login page entrance */
+.auth-brand { animation: slideInL 1s var(--ease-out) .1s backwards; }
+.auth-card { animation: slideInR 1s var(--ease-out) .25s backwards; }
+.auth-card form:not([hidden]) { animation: fadeUp .45s var(--ease-out) backwards; }
+@keyframes slideInL { from { opacity: 0; transform: translateX(-48px); } }
+@keyframes slideInR { from { opacity: 0; transform: translateX(48px) scale(.98); } }
+
+/* App: each screen slides in, its parts one after another */
+#view > * { animation: fadeUp .6s var(--ease-out) backwards; }
+#view > *:nth-child(2) { animation-delay: .07s; }
+#view > *:nth-child(3) { animation-delay: .14s; }
+#view > *:nth-child(4) { animation-delay: .21s; }
+#view > *:nth-child(n+5) { animation-delay: .28s; }
+.cards > *, .lead-grid > *, .chips > *, .row > .panel > .notif { animation: fadeUp .55s var(--ease-out) backwards; }
+.cards > *:nth-child(1) { animation-delay: .15s; } .cards > *:nth-child(2) { animation-delay: .22s; }
+.cards > *:nth-child(3) { animation-delay: .29s; } .cards > *:nth-child(4) { animation-delay: .36s; }
+.cards > *:nth-child(5) { animation-delay: .43s; } .cards > *:nth-child(n+6) { animation-delay: .5s; }
+.rate-row, .tbl tbody tr { animation: fadeUp .5s var(--ease-out) backwards; }
+.rate-row:nth-child(2), .tbl tbody tr:nth-child(2) { animation-delay: .04s; }
+.rate-row:nth-child(3), .tbl tbody tr:nth-child(3) { animation-delay: .08s; }
+.rate-row:nth-child(4), .tbl tbody tr:nth-child(4) { animation-delay: .12s; }
+.rate-row:nth-child(5), .tbl tbody tr:nth-child(5) { animation-delay: .16s; }
+.rate-row:nth-child(6), .tbl tbody tr:nth-child(6) { animation-delay: .2s; }
+.rate-row:nth-child(7), .tbl tbody tr:nth-child(7) { animation-delay: .24s; }
+.rate-row:nth-child(n+8), .tbl tbody tr:nth-child(n+8) { animation-delay: .28s; }
+.rate-row { transition: background .3s ease, box-shadow .3s ease; }
+.rate-row:hover { background: rgba(255,255,255,.07); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } }
+
+/* Hold page animations until the page loader has lifted */
+html:not(.su-ready) .auth-brand, html:not(.su-ready) .auth-card,
+html:not(.su-ready) #view > *, html:not(.su-ready) .cards > * { animation-play-state: paused; }
+
+/* Progress bars fill from the left */
+.progress > span { transform-origin: left center; animation: growX 1s var(--ease-out) .3s backwards; }
+@keyframes growX { from { transform: scaleX(0); } }
+
+/* Marks: a small pop when chosen; live badges pulse when they change */
+.segm button[aria-checked="true"] { animation: pop .28s var(--ease-out); }
+@keyframes pop { 0% { transform: scale(.8); } 60% { transform: scale(1.08); } 100% { transform: scale(1); } }
+.badge.bump { animation: bump .6s var(--ease-out); }
+@keyframes bump { 0% { transform: scale(1); } 35% { transform: scale(1.22); box-shadow: 0 0 0 6px rgba(242,194,48,.25); } 100% { transform: scale(1); } }
+.lead.first { animation: fadeUp .55s var(--ease-out) backwards, goldGlow 3s ease-in-out .6s infinite; }
+@keyframes goldGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(242,194,48,0); } 50% { box-shadow: 0 0 28px 0 rgba(242,194,48,.28); } }
+
+/* Award banner shimmer */
+.tie-banner { position: relative; overflow: hidden; animation: fadeUp .6s var(--ease-out) backwards; }
+.tie-banner::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 35%, rgba(255,230,150,.16) 50%, transparent 65%);
+  transform: translateX(-100%); animation: bannerSheen 4.5s ease-in-out 1s infinite; }
+@keyframes bannerSheen { 0% { transform: translateX(-100%); } 40%, 100% { transform: translateX(100%); } }
+.tie-banner .ico { animation: trophy 3s ease-in-out infinite; }
+@keyframes trophy { 0%, 100% { transform: rotate(0); } 8% { transform: rotate(-8deg); } 16% { transform: rotate(6deg); } 24% { transform: rotate(0); } }
+
+/* Code box: the code drops in when (re)generated */
+.code-box span { display: inline-block; animation: codeIn .6s var(--ease-out) backwards; }
+@keyframes codeIn { from { opacity: 0; transform: translateY(-10px); letter-spacing: .4em; filter: blur(4px); } }
+
+/* Modals and toasts */
+.modal-back { animation: fadeIn .25s ease backwards; }
+.modal { animation: modalIn .4s var(--ease-out) backwards; }
+@keyframes fadeIn { from { opacity: 0; } }
+@keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(.97); } }
+.notif { transition: background .2s ease, transform .25s var(--ease-out); }
+.notif:hover { transform: translateX(4px); }
+
+/* Avatar ring on the account chip */
+.me .avatar { transition: transform .3s var(--ease-out), box-shadow .3s ease; }
+.me:hover .avatar { transform: rotate(-6deg) scale(1.06); box-shadow: 0 0 0 3px rgba(242,194,48,.35); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-anim] { opacity: 1 !important; transform: none !important; }
+  .tie-banner::after, .lead.first, .tie-banner .ico { animation: none !important; }
+}

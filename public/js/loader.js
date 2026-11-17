@@ -32,11 +32,14 @@
       var el = overlay('play');
       document.body.appendChild(el);
       html.classList.remove('su-loading');
-      setTimeout(function () { el.classList.add('out'); }, 3300);
+      setTimeout(function () { el.classList.add('out'); html.classList.add('su-ready'); document.dispatchEvent(new Event('su-loader-out')); }, 3300);
       setTimeout(function () { el.remove(); document.dispatchEvent(new Event('su-loader-done')); }, 4000);
     };
     if (document.body) start(); else document.addEventListener('DOMContentLoaded', start);
   }
+
+  // Pages that didn't come through the loader are ready right away.
+  if (!(incoming && !reduce)) html.classList.add('su-ready');
 
   // Leaving: fade to dark, then go to the next page (which plays the animation).
   window.suGo = function (url, replace) {
