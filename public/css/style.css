@@ -137,6 +137,15 @@ select.field option { background: #0B1A10; }
 .modal { width: min(640px, 100%); max-height: 90vh; overflow: auto; border-radius: 32px; padding: 26px; display: flex; flex-direction: column; gap: 16px; background: rgba(14,30,20,.96); }
 .modal header { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 
+/* Temeraire (TypeTogether) for the opening-animation tagline. It is a paid
+   font: after buying a web licence, put the files in public/fonts/ with these
+   names. Until then the tagline falls back to Cinzel. */
+@font-face {
+  font-family: 'Temeraire';
+  src: url(../fonts/Temeraire-Regular.woff2) format('woff2'), url(../fonts/Temeraire-Regular.woff) format('woff');
+  font-weight: 400 700; font-style: normal; font-display: swap;
+}
+
 /* =====================================================================
    OPENING ANIMATION
    ===================================================================== */
@@ -160,7 +169,7 @@ select.field option { background: #0B1A10; }
 /* Tagline: formal all-caps serif. A soft gold shine runs through the letters
    themselves (no box of light behind the text). */
 #intro .tag {
-  font-family: 'Cinzel', 'Times New Roman', serif; font-weight: 600; text-transform: uppercase;
+  font-family: 'Temeraire', 'Cinzel', 'Times New Roman', serif; font-weight: 600; text-transform: uppercase;
   font-size: clamp(17px, 2.5vw, 30px); letter-spacing: .14em; line-height: 1.3;
   background: linear-gradient(100deg, #F3F8F4 0%, #F3F8F4 42%, #FFE69A 48%, #F2C230 50%, #FFE69A 52%, #F3F8F4 58%, #F3F8F4 100%);
   background-size: 300% 100%; background-position: 100% 0;

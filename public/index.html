@@ -11,8 +11,9 @@
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/loader.js"></script>
 </head>
 <body>
 
@@ -26,9 +27,8 @@
     </div>
     <div class="tag-wrap">
       <p class="tag">Shaping Senior UNOs of character</p>
-      <div class="sweep"></div>
     </div>
-    <div class="values"><span>MAKA-DIYOS</span><span>MAKATAO</span><span>MAKAKALIKASAN</span><span>MAKABANSA</span></div>
+    <div class="values"><span>MAKA-DIYOS</span><i>·</i><span>MAKATAO</span><i>·</i><span>MAKAKALIKASAN</span><i>·</i><span class="last">MAKABANSA</span></div>
   </div>
   <button type="button" class="btn btn-ghost btn-sm skip" id="skipIntro" tabindex="0">Skip intro
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
@@ -204,20 +204,25 @@
   var intro = document.getElementById('intro');
   var body = document.body;
   document.getElementById('yr').textContent = new Date().getFullYear();
-  var seen = false;
-  try { seen = sessionStorage.getItem('su-intro') === '1'; } catch (e) {}
+  // Play the opening animation on every refresh and on every visit from
+  // another website. Coming back from our own pages (e.g. the login page)
+  // skips it.
+  var navType = '';
+  try { var nav = performance.getEntriesByType('navigation')[0]; navType = nav ? nav.type : ''; } catch (e) {}
+  var fromOwnPage = false;
+  try { fromOwnPage = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+  var play = (navType === 'reload' || !fromOwnPage) && !window.SU_FROM_LOADER;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function finish() {
     if (!intro || intro.classList.contains('done')) return;
     intro.classList.add('done');
     body.classList.add('revealed');
-    try { sessionStorage.setItem('su-intro', '1'); } catch (e) {}
     setTimeout(function () { intro.remove(); }, 1000);
   }
-  if (seen || reduce) { intro.remove(); body.classList.add('revealed'); }
+  if (!play || reduce) { intro.remove(); body.classList.add('revealed'); }
   else {
     document.getElementById('skipIntro').addEventListener('click', finish);
-    setTimeout(finish, 5900);
+    setTimeout(finish, 7300);
   }
 
   // Hero photo slideshow
